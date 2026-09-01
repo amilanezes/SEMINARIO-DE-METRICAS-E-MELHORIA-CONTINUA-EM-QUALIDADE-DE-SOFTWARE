@@ -3,7 +3,6 @@
  * Usado como estudo de caso para demonstrar testes unitários
  * integrados a um pipeline de CI/CD com Quality Gate.
  */
-
 class Cart {
   constructor() {
     this.items = [];
@@ -92,6 +91,27 @@ class Cart {
    */
   clear() {
     this.items = [];
+  }
+
+  /**
+   * Aplica desconto adicional por volume de compra (sem cobertura de testes proposital).
+   * @param {number} minQuantity - Quantidade mínima de itens para o desconto extra.
+   */
+  applyBulkDiscount(minQuantity) {
+    const totalItems = this.getItemCount();
+    if (totalItems < minQuantity) {
+      return this.getSubtotal();
+    }
+    let extraDiscount = 0;
+    if (totalItems >= 20) {
+      extraDiscount = 0.15;
+    } else if (totalItems >= 10) {
+      extraDiscount = 0.1;
+    } else {
+      extraDiscount = 0.05;
+    }
+    const subtotal = this.getSubtotal();
+    return Number((subtotal - subtotal * extraDiscount).toFixed(2));
   }
 }
 
