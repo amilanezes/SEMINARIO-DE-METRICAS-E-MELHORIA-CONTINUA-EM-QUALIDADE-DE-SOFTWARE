@@ -1,0 +1,20 @@
+{
+  "name": "carrinho-cicd",
+  "version": "1.0.0",
+  "description": "Estudo de caso: carrinho de compras com testes unitários integrados a um pipeline de CI/CD com Quality Gate (SonarQube Cloud).",
+  "main": "src/cart.js",
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": [
+    "ci-cd",
+    "quality-gate",
+    "sonarqube",
+    "jest"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
