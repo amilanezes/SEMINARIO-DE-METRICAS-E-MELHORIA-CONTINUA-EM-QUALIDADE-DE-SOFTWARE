@@ -44,3 +44,6 @@ Gate travando de forma honesta, crie um Pull Request que **adiciona uma nova
 função sem teste correspondente** (em vez de simplesmente remover testes
 existentes) — isso reduz a cobertura de código novo abaixo do limite e reflete
 um cenário realista: alguém esqueceu de testar a funcionalidade nova.
+
+---
+Pipeline configurado e testado em 2026/09/01.
