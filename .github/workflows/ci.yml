@@ -14,13 +14,12 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
         with:
-          # necessário para o SonarQube Cloud analisar o histórico completo
           fetch-depth: 0
 
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
 
       - name: Instalar dependências
         run: npm ci
@@ -29,7 +28,7 @@ jobs:
         run: npm run test:coverage
 
       - name: Análise SonarQube Cloud (Quality Gate)
-        uses: SonarSource/sonarqube-scan-action@v4
+        uses: SonarSource/sonarqube-scan-action@v6
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
