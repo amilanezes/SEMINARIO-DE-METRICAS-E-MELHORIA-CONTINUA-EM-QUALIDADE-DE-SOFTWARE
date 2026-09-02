@@ -111,3 +111,29 @@ describe('Cart - clear', () => {
     expect(cart.items).toHaveLength(0);
   });
 });
+
+describe('Cart - applyBulkDiscount', () => {
+  test('retorna o subtotal sem desconto se não atingir a quantidade mínima', () => {
+    const cart = new Cart();
+    cart.addItem('Caneta', 2, 5);
+    expect(cart.applyBulkDiscount(10)).toBe(10);
+  });
+
+  test('aplica 5% de desconto para quantidade entre o mínimo e 9 itens', () => {
+    const cart = new Cart();
+    cart.addItem('Caneta', 10, 6);
+    expect(cart.applyBulkDiscount(5)).toBe(57);
+  });
+
+  test('aplica 10% de desconto para quantidade entre 10 e 19 itens', () => {
+    const cart = new Cart();
+    cart.addItem('Caneta', 10, 12);
+    expect(cart.applyBulkDiscount(5)).toBe(108);
+  });
+
+  test('aplica 15% de desconto para quantidade a partir de 20 itens', () => {
+    const cart = new Cart();
+    cart.addItem('Caneta', 10, 20);
+    expect(cart.applyBulkDiscount(5)).toBe(170);
+  });
+});
